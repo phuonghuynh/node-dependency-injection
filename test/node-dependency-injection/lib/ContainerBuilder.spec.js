@@ -145,13 +145,15 @@ describe('ContainerBuilder', () => {
         container.register('bar', Bar)
           .addArgument(new Reference('foo'))
 
-        let bar = container.get('bar')
-        bar = container.get('bar')
+        container.bootstrap()
 
-        setTimeout(() => {
-          console.log('call bean one')
-          bar.foo.longRegisterBean()
-        }, 2_000)
+        // let bar = container.get('bar')
+        // bar = container.get('bar')
+        //
+        // setTimeout(() => {
+        //   console.log('call bean one')
+        //   bar.foo.longRegisterBean()
+        // }, 2_000)
 
         // const foo = container.get('foo')
 

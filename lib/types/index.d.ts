@@ -95,6 +95,8 @@ export class ContainerBuilder {
     registerSyntheticAndSet(id: string, instance: any): void;
 
     waitAndGet<T = any>(id: string, opts?: {timeout?: number, intervalBetweenAttempts?: number}): Promise<T>;
+
+    bootstrap (): void;
 }
 
 export class Definition {

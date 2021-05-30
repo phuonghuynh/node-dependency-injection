@@ -1,4 +1,4 @@
-import { describe, it, beforeEach } from 'mocha'
+import { beforeEach, describe, it } from 'mocha'
 import chai from 'chai'
 import ContainerBuilder from '../../../lib/ContainerBuilder'
 import Definition from '../../../lib/Definition'
@@ -104,6 +104,61 @@ describe('ContainerBuilder', () => {
   })
 
   describe('get', () => {
+    it('should wait and retrieve promise for a registered bean',
+      () => {
+        const container = new ContainerBuilder(true)
+
+        class Foo {
+          // eslint-disable-next-line no-useless-constructor
+          constructor (container) {
+            this.container = container
+            this.one = 999
+            console.log('constructor Foo')
+          }
+
+          longRegisterBean () {
+            this.container.register('one').synthetic = true
+            this.container.set('one', this.one)
+            console.log('Foo.longRegisterBean done')
+          }
+        }
+
+        class Bar {
+          // eslint-disable-next-line no-useless-constructor
+          constructor (foo) {
+            console.log('constructor Bar')
+            this.foo = foo
+            this.one = undefined
+
+            container.waitAndGet('one')
+              // eslint-disable-next-line no-return-assign
+              .then(one => {
+                this.one = one
+                console.log(this.one)
+              })
+          }
+        }
+
+        container.register('foo', Foo)
+          .addArgument(new Reference('service_container'))
+
+        container.register('bar', Bar)
+          .addArgument(new Reference('foo'))
+
+        let bar = container.get('bar')
+        bar = container.get('bar')
+
+        setTimeout(() => {
+          console.log('call bean one')
+          bar.foo.longRegisterBean()
+        }, 2_000)
+
+        // const foo = container.get('foo')
+
+        // return assert.strictEqual(bar.one, foo.one)
+        return true
+      })
+
     it('should retrieve the same instance if is a shared definition',
       () => {
         // Arrange.

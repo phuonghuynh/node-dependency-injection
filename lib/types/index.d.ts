@@ -93,6 +93,8 @@ export class ContainerBuilder {
     setParameter(key: string, value: Parameter): void;
 
     registerSyntheticAndSet(id: string, instance: any): void;
+
+    waitAndGet<T = any>(id: string, opts?: {timeout?: number, intervalBetweenAttempts?: number}): Promise<T>;
 }
 
 export class Definition {

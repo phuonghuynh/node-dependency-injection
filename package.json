@@ -1,0 +1,76 @@
+{
+  "name": "@lazi/node-dependency-injection",
+  "version": "2.8.0",
+  "description": "fork of origin https://www.npmjs.com/package/node-dependency-injection with custom code",
+  "main": "dist/lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "ndi": "dist/bin/ndi.js"
+  },
+  "scripts": {
+    "test": "cross-env NODE_ENV=test mocha",
+    "test:coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha",
+    "test:standard": "standard",
+    "test:standard:fix": "standard --fix",
+    "build:lib": "rm -rf dist/lib/* && babel lib -d dist/lib -D",
+    "build:bin": "rm -rf dist/bin/* && babel bin -d dist/bin -D",
+    "build": "npm run build:lib && npm run build:bin",
+    "report:coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "preversion": "npm run test:standard && npm test",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phuonghuynh/node-dependency-injection.git"
+  },
+  "types": "dist/lib/types/index.d.ts",
+  "author": "ph <phuonghqh@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phuonghuynh/node-dependency-injection/issues"
+  },
+  "homepage": "https://github.com/phuonghuynh/node-dependency-injection#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^7.0.0",
+    "console.table": "^0.10.0",
+    "js-yaml": "^4.0.0",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "babel-plugin-istanbul": "^6.0.0",
+    "chai": "^4.2.0",
+    "codecov": "^4.0.0-0",
+    "cross-env": "^7.0.3",
+    "istanbul": "^0.4.5",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.4",
+    "standard": "^16.0.3"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
+  },
+  "false": {}
+}

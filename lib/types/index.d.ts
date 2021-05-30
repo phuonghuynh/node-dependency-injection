@@ -92,6 +92,7 @@ export class ContainerBuilder {
 
     setParameter(key: string, value: Parameter): void;
 
+    registerSyntheticAndSet(id: string, instance: any): void;
 }
 
 export class Definition {

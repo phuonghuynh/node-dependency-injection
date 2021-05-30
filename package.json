@@ -1,7 +1,7 @@
 {
-  "name": "node-dependency-injection",
-  "version": "2.7.0",
-  "description": "The NodeDependencyInjection component allows you to standardize and centralize the way objects are constructed in your application.",
+  "name": "@lazi/node-dependency-injection",
+  "version": "2.8.0",
+  "description": "fork of origin https://www.npmjs.com/package/node-dependency-injection with custom code",
   "main": "dist/lib/index.js",
   "directories": {
     "test": "test"
@@ -25,25 +25,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zazoomauro/node-dependency-injection.git"
+    "url": "git+https://github.com/phuonghuynh/node-dependency-injection.git"
   },
-  "keywords": [
-    "node",
-    "dependency",
-    "injection",
-    "service",
-    "container",
-    "console",
-    "inversion-of-control",
-    "service-locator"
-  ],
   "types": "dist/lib/types/index.d.ts",
-  "author": "Mauro Gadaleta <mggadaleta@gmail.com>",
+  "author": "ph <phuonghqh@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zazoomauro/node-dependency-injection/issues"
+    "url": "https://github.com/phuonghuynh/node-dependency-injection/issues"
   },
-  "homepage": "https://github.com/zazoomauro/node-dependency-injection#readme",
+  "homepage": "https://github.com/phuonghuynh/node-dependency-injection#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^7.0.0",

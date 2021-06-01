@@ -97,6 +97,8 @@ export class ContainerBuilder {
     waitAndGet<T = any>(id: string, opts?: {timeout?: number, intervalBetweenAttempts?: number}): Promise<T>;
 
     bootstrap (): void;
+
+    getOrDefault<T = any> (id, dfault): T;
 }
 
 export class Definition {

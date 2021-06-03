@@ -98,6 +98,8 @@ export class ContainerBuilder {
 
     bootstrap (): void;
 
+    clear (): void;
+
     getOrDefault<T = any> (id, dfault): T;
 }
 

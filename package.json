@@ -1,6 +1,6 @@
 {
   "name": "@hoaphat/node-dependency-injection",
-  "version": "2.8.21",
+  "version": "2.8.24",
   "description": "fork of origin https://www.npmjs.com/package/node-dependency-injection with custom code",
   "main": "dist/lib/index.js",
   "directories": {
